@@ -8,7 +8,7 @@ Bu uygulama belirlediğiniz servisleri düzenli aralıklarla kontrol eder ve **W
 
 ## 🚀 Kurulum
 
-1. Java 17+ kurulu olduğundan emin olun.
+1. Sistemin Windows 10+ olduğundan ve Java 17+ kurulu olduğundan emin olun.
 
    ```bash
    java -version
