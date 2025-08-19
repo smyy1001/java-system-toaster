@@ -1,0 +1,33 @@
+{
+  "defaultPollIntervalSec": 10,
+  "stateFile": "%APPDATA%/Toaster/state.json",
+  "services": [
+    {
+      "name": "dummy-alpha",
+      "request": { "url": "http://localhost:5000/update?service=alpha", "timeoutMs": 5000 },
+      "pollIntervalSec": 10,
+      "parse": { "updatedField": "updated", "dataPath": "data",
+        "idField": "id", "titleField": "title", "contentField": "content",
+        "linkField": "link", "iconField": "icon" },
+      "enabled": true
+    },
+    {
+      "name": "dummy-beta",
+      "request": { "url": "http://localhost:5000/update?service=beta", "timeoutMs": 5000 },
+      "pollIntervalSec": 10,
+      "parse": { "updatedField": "updated", "dataPath": "data",
+        "idField": "id", "titleField": "title", "contentField": "content",
+        "linkField": "link", "iconField": "icon" },
+      "enabled": true
+    },
+    {
+        "name": "dummy-gamma",
+        "request": { "url": "http://localhost:5000/update?service=gamma", "timeoutMs": 5000 },
+        "pollIntervalSec": 10,
+        "parse": { "updatedField": "updated", "dataPath": "data",
+            "idField": "id", "titleField": "title", "contentField": "content",
+            "linkField": "link", "iconField": "icon" },
+        "enabled": true
+    }
+  ]
+}

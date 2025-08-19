@@ -1,0 +1,27 @@
+{
+  "defaultPollIntervalSec": 10,
+  "stateFile": "%APPDATA%/Toaster/state.json",
+  "services": [
+    {
+      "name": "servis-adı",
+      "request": {
+        "url": "http://ornek.com/api/update",
+        "method": "GET",
+        "timeoutMs": 5000
+      },
+      "pollIntervalSec": 10,
+      "parse": {
+        "updatedField": "updated",
+        "updatedIsTrue": true,
+        "dataPath": "data",
+        "idField": "id",
+        "titleField": "title",
+        "contentField": "content",
+        "linkField": "link",
+        "iconField": "icon"
+      },
+      "iconOverride": null,
+      "enabled": true
+    }
+  ]
+}
