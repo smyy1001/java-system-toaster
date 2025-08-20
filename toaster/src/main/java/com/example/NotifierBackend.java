@@ -10,7 +10,6 @@ final class NotifierBackend {
         String os = System.getProperty("os.name").toLowerCase(Locale.ROOT);
 
         if (os.contains("win")) {
-            // --- WINDOWS TOAST with clickable button (opens link) ---
             String safeTitle = escapeForPS(title == null ? "" : title);
             String safeBody  = escapeForPS(content == null ? "" : content);
             String safeIcon  = escapeForPS(iconUrlOrPath == null ? "" : iconUrlOrPath);
@@ -22,7 +21,7 @@ final class NotifierBackend {
                     + "$xml.GetElementsByTagName('text').Item(0).AppendChild($xml.CreateTextNode('" + safeTitle + "')) | Out-Null; "
                     + "$xml.GetElementsByTagName('text').Item(1).AppendChild($xml.CreateTextNode('" + safeBody + "')) | Out-Null; "
                     + "if ('" + safeIcon + "' -ne '') { $xml.GetElementsByTagName('image').Item(0).SetAttribute('src','" + safeIcon + "'); } "
-                    // add a clickable button if link present
+                    // clickable button if link present
                     + "if ('" + safeLink + "' -ne '') { "
                     + "  $actions = $xml.CreateElement('actions'); "
                     + "  $action  = $xml.CreateElement('action'); "
@@ -33,12 +32,11 @@ final class NotifierBackend {
                     + "  $xml.DocumentElement.AppendChild($actions) | Out-Null; "
                     + "} "
                     + "$toast = [Windows.UI.Notifications.ToastNotification]::new($xml); "
-                    + "[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('JavaNotifier').Show($toast)\"";
+                    + "[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('Servis Bildirimi').Show($toast)\"";
 
             new ProcessBuilder("cmd.exe", "/c", ps).inheritIO().start().waitFor();
 
         } else if (os.contains("linux")) {
-            // Linux: notify-send (buton desteği çoğu masaüstünde sınırlı)
             var cmd = new java.util.ArrayList<>(java.util.List.of(
                     "notify-send",
                     title == null ? "" : title,
