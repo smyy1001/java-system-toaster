@@ -6,27 +6,6 @@ Bu uygulama belirlediğiniz servisleri düzenli aralıklarla kontrol eder ve **W
 
 ---
 
-## 🚀 Kurulum
-
-1. Sistemin Windows 10+ olduğundan ve Java 17+ kurulu olduğundan emin olun.
-
-   ```bash
-   java -version
-   ```
-2. Maven ile projeyi paketleme (toaster klasörünün içerisinde):
-
-   ```bash
-   rm -f dependency-reduced-pom.xml
-   rm -rf target
-   mvn clean package
-   ```
-3. Çalıştır:
-
-   ```bash
-   java -Dconfig="services.json" -jar target/windows-notifier-1.0-all.jar
-   ```
-
-
 ## ⚙️ services.json Yapısı
 
 `services.json` dosyası, uygulamanın hangi servisleri izleyeceğini tanımlar.
@@ -63,7 +42,6 @@ Bu uygulama belirlediğiniz servisleri düzenli aralıklarla kontrol eder ve **W
 }
 ```
 
----
 
 ## 📝 Açıklamalar
 
@@ -85,6 +63,31 @@ Her servis için:
   * `idField`, `titleField`, `contentField`, `linkField`, `iconField`: Bildirim için kullanılacak alan isimleri.
 * **iconOverride**: Buraya URL ya da dosya yolu yazılırsa, servis ne dönerse dönsün bu ikon kullanılır.
 * **enabled**: Servis aktif mi? (`true`/`false`)
+
+---
+
+
+## 🚀 Kurulum
+
+1. Sistemin Windows 10+ olduğundan ve Java 17+ kurulu olduğundan emin olun.
+
+   ```bash
+   java -version
+   ```
+2. Maven ile projeyi paketleme (toaster klasörünün içerisinde):
+
+   ```bash
+   rm -f dependency-reduced-pom.xml
+   rm -rf target
+   mvn clean package
+   ```
+3. Çalıştır:
+
+   ```bash
+   java -Dconfig="services.json" -jar target/windows-notifier-1.0-all.jar
+   ```
+
+
 
 ---
 
