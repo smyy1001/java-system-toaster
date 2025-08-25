@@ -136,13 +136,19 @@ services:
   ldap:
     image: osixia/openldap:1.5.0
     container_name: ldap
+    hostname: ldap
+    restart: always
     ports:
-      - "389:389"     # LDAP
-      - "636:636"     # LDAPS
+      - "389:389"
+      - "636:636"
     environment:
-      LDAP_ORGANISATION: "Example Org"
-      LDAP_DOMAIN: "example.org"
+      LDAP_ORGANISATION: "MyOrg"
+      LDAP_DOMAIN: "myorg.com"
       LDAP_ADMIN_PASSWORD: admin
+      LDAP_BASE_DN: "dc=myorg,dc=com"
+    volumes:
+      - ldap_data:/var/lib/ldap
+      - ldap_config:/etc/ldap/slapd.d
 
   # --- Graylog (Log management) ---
   mongodb:
@@ -173,4 +179,6 @@ services:
 volumes:
   minio_data:
   neo4j_data:
+  ldap_data:
+  ldap_config:
   mongo_data:
